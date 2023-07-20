@@ -46,7 +46,7 @@ jobs:
       - run: EXTRA_FLAGS='target_os="android"' ./get-clang.sh
       - run: |
           if [ ! -f qemu-user-static*.deb ]; then
-            wget https://snapshot.debian.org/archive/debian/20220515T152741Z/pool/main/q/qemu/qemu-user-static_7.0%2Bdfsg-6_amd64.deb
+            wget https://snapshot.debian.org/archive/debian/20230719T151544Z/pool/main/q/qemu/qemu-user-static_8.0.3%2Bdfsg-1_amd64.deb
           fi
   cache-toolchains-win:
     runs-on: windows-2019
@@ -134,7 +134,7 @@ jobs:
           sudo apt update
           sudo apt install ninja-build pkg-config qemu-user ccache bubblewrap
           sudo apt remove -y qemu-user-binfmt
-          sudo dpkg -i qemu-user-static_7.0+dfsg-6_amd64.deb
+          sudo dpkg -i qemu-user-static_8.0.3%2Bdfsg-1_amd64.deb
           # libc6-i386 interferes with x86 build
           sudo apt remove libc6-i386
       - run: ./get-clang.sh
@@ -206,7 +206,7 @@ jobs:
           sudo apt update
           sudo apt install ninja-build pkg-config qemu-user ccache bubblewrap
           sudo apt remove -y qemu-user-binfmt
-          sudo dpkg -i qemu-user-static_7.0+dfsg-6_amd64.deb
+          sudo dpkg -i qemu-user-static_8.0.3%2Bdfsg-1_amd64.deb
           # libc6-i386 interferes with x86 build
           sudo apt remove libc6-i386
       - run: ./get-clang.sh
@@ -517,7 +517,7 @@ jobs:
           sudo apt update
           sudo apt install ninja-build pkg-config qemu-user ccache bubblewrap
           sudo apt remove -y qemu-user-binfmt
-          sudo dpkg -i qemu-user-static_7.0+dfsg-6_amd64.deb
+          sudo dpkg -i qemu-user-static_8.0.3%2Bdfsg-1_amd64.deb
           # libc6-i386 interferes with x86 build
           sudo apt remove libc6-i386
       - run: ./get-clang.sh
