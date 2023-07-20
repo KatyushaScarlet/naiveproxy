@@ -16,7 +16,7 @@ env:
   SCCACHE_CACHE_SIZE: 200M
 jobs:
   cache-toolchains-posix:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Cache toolchains (Linux, OpenWrt, Android)
@@ -93,11 +93,11 @@ jobs:
       - run: EXTRA_FLAGS='target_cpu="arm64"' ./get-clang.sh
   linux:
     needs: cache-toolchains-posix
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        arch: [x64, x86, arm64, arm, mipsel, mips64el]
+        arch: [x64, x86, arm64, arm, mipsel, mips64el, loongarch64]
     env:
       EXTRA_FLAGS: 'target_cpu="${{ matrix.arch }}"'
       BUNDLE: naiveproxy-${{ github.event.release.tag_name }}-${{ github.job }}-${{ matrix.arch }}
@@ -160,7 +160,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   android:
     needs: cache-toolchains-posix
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -382,7 +382,7 @@ jobs:
       - run: ccache -s
   openwrt:
     needs: cache-toolchains-posix
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
